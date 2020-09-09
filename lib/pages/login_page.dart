@@ -8,6 +8,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
+  String email = '';
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                   }
                   return null;
                 },
+                onSaved: (value) => email = value,
               ),
               SizedBox(height: 20.0),
               TextFormField(
@@ -46,11 +50,16 @@ class _LoginPageState extends State<LoginPage> {
                   }
                   return null;
                 },
+                onSaved: (value) => password = value,
               ),
               SizedBox(height: 20.0),
               RaisedButton(
                 onPressed: () {
-                  _formKey.currentState.validate();
+                  if (_formKey.currentState.validate()) {
+                    _formKey.currentState.save();
+                    print('Email Address $email');
+                    print('Password $password');
+                  }
                 },
                 child: Text('Login'),
                 color: Colors.blue,
