@@ -26,6 +26,12 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: 'Email Address',
                   hintText: 'bhavik@gmail.com',
                 ),
+                validator: (String text) {
+                  if (!text.contains('@')) {
+                    return 'Please Enter a valid Email Address';
+                  }
+                  return null;
+                },
               ),
               SizedBox(height: 20.0),
               TextFormField(
@@ -34,10 +40,18 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: 'Password',
                 ),
                 obscureText: true,
+                validator: (String text) {
+                  if (text.length < 4) {
+                    return 'Password must be atleast 4 char long';
+                  }
+                  return null;
+                },
               ),
               SizedBox(height: 20.0),
               RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _formKey.currentState.validate();
+                },
                 child: Text('Login'),
                 color: Colors.blue,
               ),
