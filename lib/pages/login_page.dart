@@ -6,6 +6,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         margin: EdgeInsets.all(20.0),
         child: Form(
+          key: _formKey,
           child: Column(
             children: [
               TextFormField(
