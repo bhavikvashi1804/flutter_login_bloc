@@ -1,6 +1,13 @@
 import 'dart:async';
 
-class Bloc {
+import './validators.dart';
+
+class Bloc extends Object with Validators {
+  //There are two options
+  //1. extends Object with Validators
+  //Object does not has any method
+  //2. extends Validators
+
   final _email = StreamController();
   final _password = StreamController();
 
