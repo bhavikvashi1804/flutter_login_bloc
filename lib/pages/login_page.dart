@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../blocs/bloc.dart';
+
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,13 +13,7 @@ class LoginPage extends StatelessWidget {
         margin: EdgeInsets.all(20.0),
         child: Column(
           children: [
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: 'Email Address',
-                hintText: 'bhavik@gmail.com',
-              ),
-            ),
+            emailField(),
             SizedBox(height: 20.0),
             TextFormField(
               decoration: InputDecoration(
@@ -37,4 +33,20 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget emailField() {
+  return StreamBuilder(
+    stream: bloc.email,
+    builder: (context, snapshot) {
+      return TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+            labelText: 'Email Address',
+            hintText: 'bhavik@gmail.com',
+            errorText: snapshot.error),
+        onChanged: bloc.changeEmail,
+      );
+    },
+  );
 }
