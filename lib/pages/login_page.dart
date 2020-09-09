@@ -15,13 +15,7 @@ class LoginPage extends StatelessWidget {
           children: [
             emailField(),
             SizedBox(height: 20.0),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: 'Enter Password',
-                hintText: 'Password',
-              ),
-              obscureText: true,
-            ),
+            passwordField(),
             SizedBox(height: 20.0),
             RaisedButton(
               onPressed: () {},
@@ -46,6 +40,23 @@ Widget emailField() {
             hintText: 'bhavik@gmail.com',
             errorText: snapshot.error),
         onChanged: bloc.changeEmail,
+      );
+    },
+  );
+}
+
+Widget passwordField() {
+  return StreamBuilder(
+    stream: bloc.password,
+    builder: (context, snapshot) {
+      return TextFormField(
+        decoration: InputDecoration(
+          labelText: 'Enter Password',
+          hintText: 'Password',
+          errorText: snapshot.error,
+        ),
+        obscureText: true,
+        onChanged: bloc.changePassword,
       );
     },
   );
