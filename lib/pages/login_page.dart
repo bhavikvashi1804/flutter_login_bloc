@@ -17,11 +17,26 @@ class _LoginPageState extends State<LoginPage> {
         child: Form(
           child: Column(
             children: [
-              TextFormField(),
-              TextFormField(),
+              TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  labelText: 'Email Address',
+                  hintText: 'bhavik@gmail.com',
+                ),
+              ),
+              SizedBox(height: 20.0),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Enter Password',
+                  hintText: 'Password',
+                ),
+                obscureText: true,
+              ),
+              SizedBox(height: 20.0),
               RaisedButton(
-                onPressed: null,
+                onPressed: () {},
                 child: Text('Login'),
+                color: Colors.blue,
               ),
             ],
           ),
