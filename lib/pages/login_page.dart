@@ -69,6 +69,7 @@ Widget submitButton(Bloc bloc) {
             ? null
             : () {
                 print("Form is valid");
+                bloc.submit();
               },
         child: Text('Login'),
         color: Colors.blue,
