@@ -65,7 +65,11 @@ Widget submitButton(Bloc bloc) {
     stream: bloc.submitValid,
     builder: (context, snapshot) {
       return RaisedButton(
-        onPressed: () {},
+        onPressed: snapshot.hasError
+            ? null
+            : () {
+                print("Form is valid");
+              },
         child: Text('Login'),
         color: Colors.blue,
       );
