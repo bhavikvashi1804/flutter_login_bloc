@@ -19,11 +19,7 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 20.0),
             passwordField(bloc),
             SizedBox(height: 20.0),
-            RaisedButton(
-              onPressed: () {},
-              child: Text('Login'),
-              color: Colors.blue,
-            ),
+            submitButton(bloc)
           ],
         ),
       ),
@@ -59,6 +55,19 @@ Widget passwordField(Bloc bloc) {
         ),
         obscureText: true,
         onChanged: bloc.changePassword,
+      );
+    },
+  );
+}
+
+Widget submitButton(Bloc bloc) {
+  return StreamBuilder(
+    stream: bloc.submitValid,
+    builder: (context, snapshot) {
+      return RaisedButton(
+        onPressed: () {},
+        child: Text('Login'),
+        color: Colors.blue,
       );
     },
   );
