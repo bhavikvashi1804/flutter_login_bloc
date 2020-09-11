@@ -1,12 +1,11 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 import './validators.dart';
 
 class Bloc extends Object with Validators {
-  final _email = StreamController<String>();
-  final _password = StreamController<String>();
+  final _email = StreamController<String>.broadcast();
+  final _password = StreamController<String>.broadcast();
 
   Function(String) get changeEmail => _email.sink.add;
   Function(String) get changePassword => _password.sink.add;
